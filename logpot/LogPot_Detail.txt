@@ -1,0 +1,16 @@
+index.jsp (메인화면)
+
+/// plan /// 
+1. planCreate.jsp (일정 등록) - 팝업
+2. planCreateSave.jsp (일정 등록 처리)
+3. planDetail.jsp (일정 상세 화면) - 팝업
+4. planDelete.jsp (일정 삭제) -- 상세화면 btn
+5. planModify.jsp (일정 수정) -- 상세화면 btn, 동일 팝업 화면
+6. planModifySave.jsp (일정 수정 처리)
+
+
+/// Member /// 
+1. loginForm.jsp (로그인 메인 화면) - 팝업
+2. loginSuccess (로그인 성공)
+3. joinForm
+logout (로그아웃 처리)

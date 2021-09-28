@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+*{
+ padding: 0;  
+ margin: 0;
+ box-sizing: border-box; 
+}
+
+body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-height: 100vh;
+	max-width:100vw;
+	background-color: ivory;
+} 
+/* -------------------------------------------- */
+
+.leftBox{
+    width: 25%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.logo{
+	background-color: bisque;
+}
+.year-month{
+	background-color: ivory;
+}
+.box-dDay{
+	background-color: bisque;
+}
+.box-search{
+	background-color: ivory;
+}
+.box-widget{
+	background-color: bisque;
+	
+}
+
+/* -------------------------------------------- */
+
+.calendarBox{
+    border: solid 1px black;
+    width: 100%;
+    height: 100vh;
+}
+
+.week{
+    display:flex;
+}
+
+.date{
+	display:flex; 
+}
+
+/* -------------------------------------------- */
+
+.rightBox{
+    border: solid 1px black;
+    width: 3%;
+    height: 100vh;
+}
