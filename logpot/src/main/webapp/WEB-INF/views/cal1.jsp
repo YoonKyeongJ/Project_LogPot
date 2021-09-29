@@ -5,7 +5,10 @@
 <%
 Calendar cal = Calendar.getInstance();
 int y = cal.get(Calendar.YEAR); // 현재 연도
-int m = cal.get(Calendar.MONTH); // 현재 월 - 1
+int m = cal.get(Calendar.MONTH); // 현재 월 
+
+cal.add(Calendar.MONTH, -1); // 현재 월 - 1
+int prevLastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH); // 이전 달 마지막 날짜 
 
 cal.set(y, m, 1); // 현재 연, 월의 1일로 세팅 (9월)
 int onedayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // 현재 월의 1일의 요일 (현재 9월의 1일 값: 수요일, 4)
@@ -25,33 +28,25 @@ int lastDay = cal.getActualMaximum(Calendar.DATE); // 현재 월의 마지막 �
 <title>Main</title>
 </head>
 <body>
-	<div class="leftBox">
-		<div class="logo">
-		로고영역
-		</div>
 
+	<div class="leftBox">
+		<div class="logo">로고영역</div>
+		
 		<!-- 현재 연/월 -->
 		<div class="year-month"><%=y%>
 			&nbsp;
-			<%=m + 1%>
+			<%=m%>
 		</div>
 
 		<!-- 연간 이벤트 d-day-->
-		<div class="box-dDay">
-		d-day 영역
-		</div>
-		
+		<div class="box-dDay">d-day 영역</div>
+
 		<!-- 검색창 -->
-		<div class="box-search">
-		검색 영역
-		</div>
-		
+		<div class="box-search">검색 영역</div>
+
 		<!-- 위젯 창 -->
-		<div class="box-widget">
-		위젯 영역
-		<c:import url="http://www.google.com" />
-		</div>
-		
+		<div class="box-widget">위젯 영역</div>
+
 	</div>
 
 	<div class="calendarBox">
@@ -67,25 +62,33 @@ int lastDay = cal.getActualMaximum(Calendar.DATE); // 현재 월의 마지막 �
 		</div>
 
 		<!-- 달력 숫자 -->
-		<div class="date"> 
-		<!-- 빈 날짜 전 월 날짜 출력 -->
-		<c:set var="cnt" value="0" />
-		<c:forEach var="i" begin="1" end="<%=onedayOfWeek %>">
-			<c:set var="cnt" value="${cnt + 1}" />
-			<div class="prevDate"></div>
-		</c:forEach>
-		
-		<!-- 현재 월 날짜 출력  -->
-		<c:forEach var="date" begin="1" end="<%=lastDay%>">
-			
-			${date }
-			<c:if test="${cnt%7==0 }">
-				<br />
-			</c:if>
-			<c:set var="cnt" value="${cnt + 1}" />
-		</c:forEach>
+		<div class="date">
+			<!-- 이전 월 날짜 출력 -->
+			<c:set var="cnt" value="0" />
+			<c:set var="prevLastDay" value="<%=prevLastDay%>" />
+			<c:set var="j" value="<%=onedayOfWeek - 1%>" />
+			<c:forEach var="i" begin="1" end="<%=onedayOfWeek - 1%>">
+				<c:set var="j" value="${j - 1 }" />
+				<div class="prevDate">
+					<button>${prevLastDay - j}</button>
+				</div>
+				<c:set var="cnt" value="${cnt + 1 }" />
+			</c:forEach>
+
+			<!-- 현재 월 날짜 출력  -->
+			<c:forEach var="date" begin="1" end="<%=lastDay%>">
+				<c:set var="cnt" value="${cnt + 1}" />
+				<div class="currentDate">${date }</div>
+			</c:forEach>
+			<c:forEach var="date" begin="1" end="<%=6 - onedayOfWeek%>">
+
+				<div class="nextDate">${date }</div>
+			</c:forEach>
 		</div>
+		<!-- date -->
 	</div>
+	<!-- calendarBox -->
+
 
 
 	<div class="rightBox">

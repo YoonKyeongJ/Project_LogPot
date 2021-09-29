@@ -4,6 +4,7 @@
  padding: 0;  
  margin: 0;
  box-sizing: border-box; 
+ overflow: hidden;
 }
 
 body{
@@ -19,23 +20,27 @@ body{
 .leftBox{
     width: 25%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 5px;
 }
 .logo{
 	background-color: bisque;
+	float: left;
+    
 }
 .year-month{
 	background-color: ivory;
+	float: right;
+    
 }
 .box-dDay{
 	background-color: bisque;
+	clear: both;
 }
 .box-search{
 	background-color: ivory;
 }
 .box-widget{
+	
 	background-color: bisque;
 	
 }
@@ -43,17 +48,37 @@ body{
 /* -------------------------------------------- */
 
 .calendarBox{
-    border: solid 1px black;
+    padding: 5px;
     width: 100%;
     height: 100vh;
 }
-
-.week{
-    display:flex;
+.week, .date{
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 }
 
-.date{
-	display:flex; 
+.week{
+	justify-items: center;
+	align-items: center;
+	height: 30px;
+	margin-bottom: 10px;
+	background-color: pink;
+	border-radius: 5px;
+}
+
+.date {
+	height: 95%;
+	flex-grow: 1;
+	border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-radius: 5px;
+}
+
+.date > div{
+	padding: 3px;
+	border: 1px solid grey;
+	border-left: none;
+	border-top: none;
 }
 
 /* -------------------------------------------- */
